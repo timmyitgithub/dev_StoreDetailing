@@ -27,7 +27,7 @@ class APIConnectionController extends Controller
     $connection->token = $request->input('token');
     $connection->scopes = $request->input('scopes');
     $connection->retailer = $request->input('retailer');
-    $connection->active_checkbox = $request->input('active_checkbox') ? true : false;
+    $connection->active = $request->input('active') ? true : false;
     $connection->save();
 
     return redirect()->route('settings.api')->with('success', 'Thêm kết nối thành công!');
@@ -43,7 +43,7 @@ class APIConnectionController extends Controller
     $item->token = $request->input('token');
     $item->scopes = $request->input('scopes');
     $item->retailer = $request->input('retailer');
-    $item->active = $request->has('active_checkbox');
+    $item->active = $request->has('active');
 
     $item->save();
     return redirect()->route('settings.api')->with('success', 'Cập nhật thông tin '.$item->connection_name.' thành công!');

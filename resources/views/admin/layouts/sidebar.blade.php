@@ -6,6 +6,12 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/horizon">
+          <i class="mdi mdi-grid-large menu-icon"></i>
+          <span class="menu-title">Horizon</span>
+        </a>
+      </li>
       <li class="nav-item nav-category">UI Elements</li>
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -94,6 +100,8 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="/settings/api">API</a></li>
             <li class="nav-item"> <a class="nav-link" href="/settings/webhook">Webhook</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/notification">notification</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/task">Tasks</a></li>
             <li class="nav-item"> <a class="nav-link" href="/settings/other">Khác</a></li>
           </ul>
         </div>

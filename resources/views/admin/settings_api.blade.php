@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-check form-check-flat form-check-primary">
                             <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" id="active_checkbox" name="active_checkbox">
+                                <input type="checkbox" class="form-check-input" id="active" name="active">
                                 Hoạt động
                                 <i class="input-helper"></i></label>
                         </div>
@@ -156,8 +156,8 @@
                             </div>
                             <div class="form-check form-check-flat form-check-primary">
                                 <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="active_checkbox"
-                                        name="active_checkbox" {{ $item->active == true ? 'checked' : '' }}>
+                                    <input type="checkbox" class="form-check-input" id="active"
+                                        name="active" {{ $item->active == true ? 'checked' : '' }}>
                                     Hoạt động
                                     <i class="input-helper"></i></label>
                             </div>

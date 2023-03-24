@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
       <div class="me-3">
@@ -70,44 +73,35 @@
           </form>
         </li>
         <li class="nav-item dropdown">
+            <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                <i class="icon-mail"></i>
+              {{-- <span class="count"></span> --}}
+            </a>
+          </li>
+        <li class="nav-item dropdown">
           <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-            <i class="icon-mail icon-lg"></i>
+            <i class="icon-bell"></i>
+            <span class="count"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
             <a class="dropdown-item py-3 border-bottom">
-              <p class="mb-0 font-weight-medium float-left">You have 4 new notifications </p>
+              <p class="mb-0 font-weight-medium float-left">Bạn có {{Auth::user()->notifications->count()}} thông báo chưa đọc </p>
               <span class="badge badge-pill badge-primary float-right">View all</span>
             </a>
+            @foreach (Auth::user()->notifications as $notification)
             <a class="dropdown-item preview-item py-3">
               <div class="preview-thumbnail">
                 <i class="mdi mdi-alert m-auto text-primary"></i>
               </div>
               <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">Application Error</h6>
-                <p class="fw-light small-text mb-0"> Just now </p>
+                <h6 class="preview-subject fw-normal text-dark mb-1">{{ $notification->data['title'] }}</h6>
+                <p class="fw-light small-text mb-0"> {{$notification->created_at->diffForHumans(Carbon::now())}} </p>
               </div>
             </a>
-            <a class="dropdown-item preview-item py-3">
-              <div class="preview-thumbnail">
-                <i class="mdi mdi-settings m-auto text-primary"></i>
-              </div>
-              <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">Settings</h6>
-                <p class="fw-light small-text mb-0"> Private message </p>
-              </div>
-            </a>
-            <a class="dropdown-item preview-item py-3">
-              <div class="preview-thumbnail">
-                <i class="mdi mdi-airballoon m-auto text-primary"></i>
-              </div>
-              <div class="preview-item-content">
-                <h6 class="preview-subject fw-normal text-dark mb-1">New user registration</h6>
-                <p class="fw-light small-text mb-0"> 2 days ago </p>
-              </div>
-            </a>
+            @endforeach
           </div>
         </li>
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
           <a class="nav-link count-indicator" id="countDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="icon-bell"></i>
             <span class="count"></span>
@@ -146,7 +140,7 @@
               </div>
             </a>
           </div>
-        </li>
+        </li> --}}
         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
           <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <img class="img-xs rounded-circle" src="{{ asset('assets/images/faces/face8.jpg')}}" alt="Profile image"> </a>

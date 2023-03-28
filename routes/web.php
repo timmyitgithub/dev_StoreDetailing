@@ -34,3 +34,6 @@ Route::get('/notifications/all', [App\Http\Controllers\SendNotification::class, 
 Route::get('/task', [App\Http\Controllers\TaskController::class, 'index'])->name('index');
 Route::post('/task', [App\Http\Controllers\TaskController::class, 'store'])->name('store.task');
 Route::delete('/task/{task}', [App\Http\Controllers\TaskController::class, 'delete'])->name('delete.task');
+
+Route::resource('customers', App\Http\Controllers\CustomerController::class);
+

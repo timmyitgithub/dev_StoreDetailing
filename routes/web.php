@@ -27,6 +27,9 @@ Route::post('/settings/api/{id}/update', [App\Http\Controllers\APIConnectionCont
 
 Route::get('notification', [App\Http\Controllers\SendNotification::class, 'create'])->name('notification.create');
 Route::post('notification', [App\Http\Controllers\SendNotification::class, 'store'])->name('notification.store');
+Route::get('/notifications/mark-as-read/{notification}', [App\Http\Controllers\SendNotification::class, 'markAsRead'])->name('notifications.markAsRead');
+Route::get('/notifications/mark-un-read/{notification}', [App\Http\Controllers\SendNotification::class, 'markUnRead'])->name('notifications.markUnRead');
+Route::get('/notifications/all', [App\Http\Controllers\SendNotification::class, 'showAll'])->name('notifications.all');
 
 Route::get('/task', [App\Http\Controllers\TaskController::class, 'index'])->name('index');
 Route::post('/task', [App\Http\Controllers\TaskController::class, 'store'])->name('store.task');

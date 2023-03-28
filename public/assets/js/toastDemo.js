@@ -11,16 +11,23 @@
           position: 'top-right'
         })
       };
-  showInfoToast = function() {
+  showNotifyToast = function(title,time) {
     'use strict';
     resetToastPosition();
     $.toast({
-      heading: 'Info',
-      text: 'And these were just the basic demos! Scroll down to check further details on how to customize the output.',
-      showHideTransition: 'slide',
-      icon: 'info',
-      loaderBg: '#46c35f',
-      position: 'top-right'
+        heading: title,
+        text: time,
+        icon: 'info',
+        loader: true,
+        position: 'bottom-right',
+        loaderBg: '#fff',
+        bgColor: '#007bff',
+        textColor: '#fff',
+        textAlign: 'left',
+        stack: 5,
+        showHideTransition: 'fade',
+        allowToastClose: true, // hiển thị nút tắt thông báo
+        hideAfter: false, // không tự động đóng thông báo
     })
   };
   showWarningToast = function() {

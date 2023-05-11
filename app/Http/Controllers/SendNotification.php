@@ -8,12 +8,15 @@ use Pusher\Pusher;
 use Illuminate\Http\Request;
 use App\Notifications\TestNotification;
 use App\Models\User;
+use App\Services\Send_Notification;
 
 class SendNotification extends Controller
 {
-    public function __construct()
+    protected $Send_Notification;
+    public function __construct(Send_Notification $Send_Notification)
     {
         $this->middleware('auth');
+        $this->Send_Notification = $Send_Notification;
     }
     public function create()
     {

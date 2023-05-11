@@ -30,10 +30,13 @@ Route::post('notification', [App\Http\Controllers\SendNotification::class, 'stor
 Route::get('/notifications/mark-as-read/{notification}', [App\Http\Controllers\SendNotification::class, 'markAsRead'])->name('notifications.markAsRead');
 Route::get('/notifications/mark-un-read/{notification}', [App\Http\Controllers\SendNotification::class, 'markUnRead'])->name('notifications.markUnRead');
 Route::get('/notifications/all', [App\Http\Controllers\SendNotification::class, 'showAll'])->name('notifications.all');
+Route::get('/notifications/send', [App\Http\Controllers\SendNotification::class, 'send'])->name('notifications.create');
 
 Route::get('/task', [App\Http\Controllers\TaskController::class, 'index'])->name('index');
 Route::post('/task', [App\Http\Controllers\TaskController::class, 'store'])->name('store.task');
 Route::delete('/task/{task}', [App\Http\Controllers\TaskController::class, 'delete'])->name('delete.task');
+Route::resource('customers', App\Http\Controllers\KiotVietTo1OfficeController::class);
+Route::get('customers/{id}/re_sync', [App\Http\Controllers\KiotVietTo1OfficeController::class, 're_sync']);
+// Route::post('customers/hook', [App\Http\Controllers\KiotVietTo1OfficeController::class, 'hook']);
 
-Route::resource('customers', App\Http\Controllers\CustomerController::class);
-
+Route::post('/webhook', [App\Http\Controllers\KiotVietTo1OfficeController::class, 'handle']);

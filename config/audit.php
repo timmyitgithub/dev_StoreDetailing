@@ -166,14 +166,33 @@ return [
     | Whether console events should be audited (eg. php artisan db:seed).
     |
     */
+    'auditable_models' => [
+        'App\Models\Customer' => [
+            'events' => ['created', 'updated', 'deleted'],
+            'except' => ['password', 'remember_token'],
+            'timestamps' => true,
+            'threshold' => 10,
+            'strict' => true,
+            'decode_json' => false,
+            'hash' => false,
+            'hash_key' => null,
+            'log_events' => [],
+            'log_only_dirty' => true,
+            'log_name' => 'default',
+            'log_custom_message' => null,
+            'log_user_id' => null,
+            'enabled' => true,
+            'use_morph_map' => true,
+            'dateFormat' => 'Y-m-d H:i:s',
+            'connection' => null,
+        ],
+    ],
 
     'console' => false,
 
 
-    // ADD New
-    'user_model' => 'App\Models\User',
-    'customer_model' => 'App\Models\Customer',
 
+    'user_model' => 'App\Models\User',
     'resolver' => [
         'single' => \OwenIt\Auditing\Resolvers\UserAgentResolver::class,
         'multiple' => [
